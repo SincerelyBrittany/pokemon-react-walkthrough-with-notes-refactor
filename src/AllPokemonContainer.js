@@ -12,6 +12,8 @@ export default function AllPokemonContainer(props){
 
   const [nextURL, setNextURL] = useState('https://pokeapi.co/api/v2/pokemon')
 
+  const [ prevUrl, setPrevUrl] = useState('')
+
   const [isLoading, setIsLoading] = useState(false)
 
   const [getNextPokemon, setGetNextPokemon] = useState(true)
@@ -38,6 +40,7 @@ export default function AllPokemonContainer(props){
           }
           const data = await res.json()
           setNextURL(data.next) 
+          setPrevUrl(data.prev)
           const initialPokemonList = data.results
           // const pokeFullDataList = []
           // for (let p of initialPokemonList){
@@ -91,11 +94,25 @@ export default function AllPokemonContainer(props){
       // }
   }
 
+  const handlePrevPage = () => {
+    
+      // try{
+
+      // }catch(err){
+
+      // }
+  }
+
   const renderLoaderOrButtons = () => {
       if(isLoading){
         return <div class="loader"></div>
       } else {
-        return <PokeBtn onClick={handleNextPage}> Next </PokeBtn>
+        return (
+        <div>
+        <PokeBtn onClick={handlePrevPage}> Prev </PokeBtn>
+        <PokeBtn onClick={handleNextPage}> Next </PokeBtn>
+        </div>
+        )
       }
   }
 
