@@ -18,6 +18,8 @@ export default function AllPokemonContainer(props){
 
   const [getNextPokemon, setGetNextPokemon] = useState(true)
 
+  const [getprevPokemon, setGetPrevPokemon] = useState(false)
+
   useEffect(()=>{
 
     async function mapNewLocationInData(initialArray){
@@ -31,16 +33,19 @@ export default function AllPokemonContainer(props){
     }
 
       //promise.all will only resolve once all of the promises within the array is resolve
-  async function fetchPokemon(){
+  async function fetchPokemon(getNext){
       setIsLoading(true)
+      //if getNExt is true, set url to nextUrl
+      //else set url to prev url 
+      const url = getNext ? nextURL : prevUrl
         try{
-          const res = await fetch(nextURL)
+          const res = await fetch(url)
           if(!res.ok){
             throw res
           }
           const data = await res.json()
           setNextURL(data.next) 
-          setPrevUrl(data.prev)
+          setPrevUrl(data.previous)
           const initialPokemonList = data.results
           // const pokeFullDataList = []
           // for (let p of initialPokemonList){
@@ -63,10 +68,13 @@ export default function AllPokemonContainer(props){
         }
       }
       if(getNextPokemon){
-          fetchPokemon()
+          fetchPokemon(true)
           setGetNextPokemon(false)
+      }else if(getprevPokemon){
+        fetchPokemon(false)
+        setGetPrevPokemon(false)
       }
-  }, [getNextPokemon])
+  }, [getNextPokemon, getprevPokemon])
   //useEffect takses in as an argument a function that will run upon every single render of this componenet.
   //is you pass in an empty array as an argument it will only run upon component mounting
   //if you return a function form use efft, the function will run upon unmounting 
@@ -95,7 +103,7 @@ export default function AllPokemonContainer(props){
   }
 
   const handlePrevPage = () => {
-    
+    setGetPrevPokemon(true)
       // try{
 
       // }catch(err){
