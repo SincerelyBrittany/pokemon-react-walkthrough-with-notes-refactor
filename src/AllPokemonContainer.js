@@ -117,8 +117,8 @@ export default function AllPokemonContainer(props){
       } else {
         return (
         <div>
-        <PokeBtn onClick={handlePrevPage}> Prev </PokeBtn>
-        <PokeBtn onClick={handleNextPage}> Next </PokeBtn>
+        <PokeBtn onClick={handlePrevPage} disabled={!prevUrl}> Prev </PokeBtn>
+        <PokeBtn onClick={handleNextPage} disabled={!nextURL}> Next </PokeBtn>
         </div>
         )
       }
