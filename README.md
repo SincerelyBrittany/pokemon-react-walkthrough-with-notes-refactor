@@ -1,2 +1,2 @@
-# pokemon-react-walkthrough-with-notes-refactor
+# todo-app-with-react-hooks
 Created with CodeSandbox
