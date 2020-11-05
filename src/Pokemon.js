@@ -11,7 +11,7 @@ export default function Pokemon(props){
     <PokemonCard>
       <h2> {props.name} </h2>
       <img src={props.spriteUrl} />
-      <PokeBtn onClick={handleClick}>Choose</PokeBtn>
+      <PokeBtn onClick={handleClick}>{props.buttonLabel}</PokeBtn>
     </PokemonCard>
   )
 }

@@ -88,6 +88,7 @@ export default function AllPokemonContainer(props){
     return pokemons.map(p => {
        return <Pokemon name={p.name} 
        key={p.id} 
+       buttonLabel={"choose"}
        spriteUrl={p.sprites.front_default}
        handleChoosePokemon={props.handleChoosePokemon}/>
     })

@@ -9,6 +9,7 @@ export default function PokeTeamContainer(props){
       return< Pokemon
         name={p.name} 
         key={p.name} 
+        buttonLabel={"remove"}
        spriteUrl={p.spriteUrl}
        handleChoosePokemon={p.handleChoosePokemon}
       />
