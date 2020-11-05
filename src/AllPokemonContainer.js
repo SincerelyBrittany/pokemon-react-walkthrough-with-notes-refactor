@@ -92,27 +92,17 @@ export default function AllPokemonContainer(props){
        key={p.id} 
        buttonLabel={"choose"}
        spriteUrl={p.sprites.front_default}
-       handleRemovePokemon ={props.handleRemovePokemon}
+      //  handleRemovePokemon ={props.handleRemovePokemon}
        handlePokemonClick={props.handlePokemonClick}/>
     })
   }
   
   const handleNextPage = () => {
     setGetNextPokemon(true)
-      // try{
-
-      // }catch(err){
-
-      // }
   }
 
   const handlePrevPage = () => {
     setGetPrevPokemon(true)
-      // try{
-
-      // }catch(err){
-
-      // }
   }
 
   const renderLoaderOrButtons = () => {
