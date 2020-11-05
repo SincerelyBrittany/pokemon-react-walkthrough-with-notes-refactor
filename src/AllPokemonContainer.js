@@ -90,7 +90,7 @@ export default function AllPokemonContainer(props){
        key={p.id} 
        buttonLabel={"choose"}
        spriteUrl={p.sprites.front_default}
-       handleChoosePokemon={props.handleChoosePokemon}/>
+       handlePokemonClick={props.handlePokemonClick}/>
     })
   }
   

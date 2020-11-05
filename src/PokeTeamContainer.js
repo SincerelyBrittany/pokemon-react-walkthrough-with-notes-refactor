@@ -11,7 +11,7 @@ export default function PokeTeamContainer(props){
         key={p.name} 
         buttonLabel={"remove"}
        spriteUrl={p.spriteUrl}
-       handleChoosePokemon={p.handleChoosePokemon}
+       handlePokemonClick={p.handlePokemonClick}
       />
     })
   }

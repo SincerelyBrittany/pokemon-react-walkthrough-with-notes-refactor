@@ -7,7 +7,7 @@ export default function App() {
 
   const [choosenPokemon, setChoosenPokemon] = useState([])
 
-const handleChoosePokemon = (pokeobj) => {
+const handlePokemonClick = (pokeobj) => {
   if(choosenPokemon.length > 5){ return }
   // if(!!choosenPokemon.find(p => p.id === pokeobj.id)){
   //   return
@@ -18,7 +18,7 @@ const handleChoosePokemon = (pokeobj) => {
   return (
     <div className="App">
       <PokeTeamContainer pokemon={choosenPokemon}/>
-      <AllPokemonContainer handleChoosePokemon={handleChoosePokemon}/>
+      <AllPokemonContainer handlePokemonClick={handlePokemonClick}/>
     </div>
   );
 }
