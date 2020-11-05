@@ -7,11 +7,13 @@ export default function PokeTeamContainer(props){
   const renderPokemon = () => {
     return props.pokemon.map(p => {
       return< Pokemon
-        name={p.name} 
+        name={p.name}
+        id={p.id} 
         key={p.name} 
         buttonLabel={"remove"}
        spriteUrl={p.spriteUrl}
-       handlePokemonClick={p.handlePokemonClick}
+       handlePokemonClick={props.handleRemoveClick}
+      //  handleRemovePokemon={p.handleRemovePokemon}
       />
     })
   }
