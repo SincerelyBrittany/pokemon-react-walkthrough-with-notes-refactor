@@ -15,6 +15,18 @@ export default function AllPokemonContainer(props){
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(()=>{
+
+    function mapNewLocationInData(initialArray){
+      return Promise.all(initialArray.map(pokemonInfo => {
+          fetch(pokemonInfo.url)
+          .then(res => {
+            if(!res.ok){throw res}
+            return res.json()
+          })
+      }))
+    }
+
+      //promise.all will only resolve once all of the promises within the array is resolve
     (async function fetchPokemon(){
       setIsLoading(true)
         try{
@@ -41,8 +53,7 @@ export default function AllPokemonContainer(props){
         }
         catch(err){
           setIsLoading(false)
-          // alert("an error occurred")
-       
+          alert(err.status)
         }
       })
       ()
