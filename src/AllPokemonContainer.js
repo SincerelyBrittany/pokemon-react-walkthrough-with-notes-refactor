@@ -10,9 +10,11 @@ export default function AllPokemonContainer(props){
   //useState([]) is pass in the initial value of pokemon to be and in this case it is an empty array
   const [pokemons, setPokemon] = useState([]);
 
-  const [nextURL, setNextURL] = useState('')
+  const [nextURL, setNextURL] = useState('https://pokeapi.co/api/v2/pokemon')
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const [getNextPokemon, setGetNextPokemon] = useState(true)
 
   useEffect(()=>{
 
@@ -30,7 +32,7 @@ export default function AllPokemonContainer(props){
   async function fetchPokemon(){
       setIsLoading(true)
         try{
-          const res = await fetch('https://pokeapi.co/api/v2/pokemon')
+          const res = await fetch(nextURL)
           if(!res.ok){
             throw res
           }
@@ -54,11 +56,14 @@ export default function AllPokemonContainer(props){
         }
         catch(err){
           setIsLoading(false)
-         alert(err.status)
+          alert(err.status)
         }
       }
-    fetchPokemon()
-  }, [])
+      if(getNextPokemon){
+          fetchPokemon()
+          setGetNextPokemon(false)
+      }
+  }, [getNextPokemon])
   //useEffect takses in as an argument a function that will run upon every single render of this componenet.
   //is you pass in an empty array as an argument it will only run upon component mounting
   //if you return a function form use efft, the function will run upon unmounting 
@@ -78,7 +83,12 @@ export default function AllPokemonContainer(props){
   }
   
   const handleNextPage = () => {
+    setGetNextPokemon(true)
+      // try{
 
+      // }catch(err){
+
+      // }
   }
 
   const renderLoaderOrButtons = () => {
