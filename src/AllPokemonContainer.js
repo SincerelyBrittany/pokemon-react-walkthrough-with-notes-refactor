@@ -16,9 +16,9 @@ export default function AllPokemonContainer(props){
 
   useEffect(()=>{
 
-    function mapNewLocationInData(initialArray){
+    async function mapNewLocationInData(initialArray){
       return Promise.all(initialArray.map(pokemonInfo => {
-          fetch(pokemonInfo.url)
+         return fetch(pokemonInfo.url)
           .then(res => {
             if(!res.ok){throw res}
             return res.json()
@@ -27,7 +27,7 @@ export default function AllPokemonContainer(props){
     }
 
       //promise.all will only resolve once all of the promises within the array is resolve
-    (async function fetchPokemon(){
+  async function fetchPokemon(){
       setIsLoading(true)
         try{
           const res = await fetch('https://pokeapi.co/api/v2/pokemon')
@@ -37,26 +37,27 @@ export default function AllPokemonContainer(props){
           const data = await res.json()
           setNextURL(data.next) 
           const initialPokemonList = data.results
-          const pokeFullDataList = []
-          for (let p of initialPokemonList){
-            const pokeRes = await fetch(p.url)
-            if(!res.ok){
-              throw res
-            }
-            const pokeResult = await pokeRes.json();
-            pokeFullDataList.push(pokeResult);
-          }
-          // console.log(data)
-          // console.log(pokeFullDataList)
-           await setPokemon(pokeFullDataList)
-           setIsLoading(false)
+          // const pokeFullDataList = []
+          // for (let p of initialPokemonList){
+          //   const pokeRes = await fetch(p.url)
+          //   if(!res.ok){
+          //     throw res
+          //   }
+          //   const pokeResult = await pokeRes.json();
+          //   pokeFullDataList.push(pokeResult);
+          // }
+          // // console.log(data)
+          // // console.log(pokeFullDataList)
+            const pokeFullDataList = await mapNewLocationInData(initialPokemonList)
+            setPokemon(pokeFullDataList)
+            setIsLoading(false)
         }
         catch(err){
           setIsLoading(false)
-          alert(err.status)
+         alert(err.status)
         }
-      })
-      ()
+      }
+    fetchPokemon()
   }, [])
   //useEffect takses in as an argument a function that will run upon every single render of this componenet.
   //is you pass in an empty array as an argument it will only run upon component mounting
