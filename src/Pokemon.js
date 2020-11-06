@@ -7,7 +7,6 @@ export default function Pokemon(props){
   const [imgLoaded, setImgLoaded] = useState(false)
 
   const handleClick = e => {
-    console.log(props)
      props.handlePokemonClick(props)
   }
 

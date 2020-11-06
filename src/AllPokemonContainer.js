@@ -84,7 +84,6 @@ export default function AllPokemonContainer(props){
 
 
   const renderPokeCards = () => {
-    console.log("hello")
     return pokemons.map(p => {
        return <Pokemon 
        id={p.id}
