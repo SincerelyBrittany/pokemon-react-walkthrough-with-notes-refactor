@@ -107,7 +107,7 @@ export default function AllPokemonContainer(props){
 
   const renderLoaderOrButtons = () => {
       if(isLoading){
-        return <div class="loader"></div>
+        return <div className="loader"></div>
       } else {
         return (
         <div>
