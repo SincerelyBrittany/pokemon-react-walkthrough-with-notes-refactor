@@ -12,7 +12,7 @@ export default function App() {
     setChoosenPokemon(newPokemon)
   }
 
-const handlePokemonClick = (pokeobj) => {
+const handleChoosePokemon= (pokeobj) => {
   console.log(pokeobj)
   if(choosenPokemon.length > 5){ return }
   if(!!choosenPokemon.find(p => p.id === pokeobj.id)){
@@ -26,7 +26,7 @@ const handlePokemonClick = (pokeobj) => {
       <PokeTeamContainer 
       pokemon={choosenPokemon}
       handleRemovePokemon={handleRemovePokemon}/>
-      <AllPokemonContainer handlePokemonClick={handlePokemonClick}/>
+      <AllPokemonContainer handleChoosePokemon={handleChoosePokemon}/>
     </div>
   );
 }

@@ -4,7 +4,8 @@ import {PokemonCard, PokeBtn} from './Styles';
 export default function Pokemon(props){
 
   const handleClick = e => {
-    props.handlePokemonClick(props)
+    console.log(props)
+     props.handlePokemonClick(props)
   }
 
   return(

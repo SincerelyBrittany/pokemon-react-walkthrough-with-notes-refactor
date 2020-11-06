@@ -93,7 +93,7 @@ export default function AllPokemonContainer(props){
        buttonLabel={"choose"}
        spriteUrl={p.sprites.front_default}
       //  handleRemovePokemon ={props.handleRemovePokemon}
-       handlePokemonClick={props.handlePokemonClick}/>
+       handlePokemonClick={props.handleChoosePokemon}/>
     })
   }
   
